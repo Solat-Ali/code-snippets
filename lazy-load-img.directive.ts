@@ -8,7 +8,7 @@ import { NzSkeletonElementImageComponent } from 'ng-zorro-antd/skeleton';
  * Uses Intersection Observer to load the resource when the element enters the viewport.
  *
  * @inputs
- * - `collabLazyLoad: string` - The fallback image or background URL.
+ * - `lazyLoadImg: string` - The fallback image or background URL.
  * - `isBgImg: boolean` - If `true`, applies the image as a background (`background-image`).
  * - `lazySrcSet: Partial<Record<'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl', string>>` -
  *   (Optional) URLs for specific breakpoints. If not provided, `collabLazyLoad` is used as the default.
@@ -23,7 +23,7 @@ import { NzSkeletonElementImageComponent } from 'ng-zorro-antd/skeleton';
  * ### For `<img>`:
  * ```html
  * <img
- *   collabLazyLoad="default.jpg"
+ *   lazyLoadImg="default.jpg"
  *   [lazySrcSet]="{ xs: 'small.jpg', lg: 'large.jpg' }"
  *   alt="Lazy loaded image"
  * />
@@ -32,7 +32,7 @@ import { NzSkeletonElementImageComponent } from 'ng-zorro-antd/skeleton';
  * ### For Background Images:
  * ```html
  * <div
- *   collabLazyLoad="default-bg.jpg"
+ *   lazyLoadImg="default-bg.jpg"
  *   [lazySrcSet]="{ xs: 'small-bg.jpg', lg: 'large-bg.jpg' }"
  *   [isBgImg]="true"
  *   style="height: 300px; width: 100%; background-size: cover;">
@@ -59,7 +59,7 @@ interface SrcSet {
 }
 
 @Directive({
-    selector: '[collabLazyLoad]',
+    selector: '[lazyLoadImg]',
     standalone: true,
 })
 export class LazyLoadImgDirective implements AfterViewInit, OnDestroy {
